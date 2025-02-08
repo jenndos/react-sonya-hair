@@ -53,26 +53,26 @@ const MediaGrid = () => {
 
     useEffect(() => {
         const items = [
-            { type: 'image', preview: previewImage1, full: image1 },
-            { type: 'image', preview: previewImage2, full: image2 },
-            { type: 'image', preview: previewImage3, full: image3 },
-            { type: 'image', preview: previewImage4, full: image4 },
-            { type: 'image', preview: previewImage5, full: image5 },
-            { type: 'video', preview: previewVideo1, full: video1 },
-            { type: 'video', preview: previewVideo2, full: video2 },
-            { type: 'video', preview: previewVideo3, full: video3 },
-            { type: 'video', preview: previewVideo4, full: video4 },
-            { type: 'video', preview: previewVideo5, full: video5 },
-            { type: 'video', preview: previewVideo6, full: video6 },
-            { type: 'video', preview: previewVideo7, full: video7 },
-            { type: 'video', preview: previewVideo8, full: video8 },
-            { type: 'video', preview: previewVideo9, full: video9 },
-            { type: 'video', preview: previewVideo10, full: video10 },
-            { type: 'video', preview: previewVideo11, full: video11 },
-            { type: 'video', preview: previewVideo12, full: video12 },
-            { type: 'video', preview: previewVideo13, full: video13 },
-            { type: 'video', preview: previewVideo14, full: video14 },
-            { type: 'video', preview: previewVideo15, full: video15 },
+            { id: 1, type: 'image', preview: previewImage1, full: image1 },
+            { id: 2, type: 'image', preview: previewImage2, full: image2 },
+            { id: 3, type: 'image', preview: previewImage3, full: image3 },
+            { id: 4, type: 'image', preview: previewImage4, full: image4 },
+            { id: 5, type: 'image', preview: previewImage5, full: image5 },
+            { id: 6, type: 'video', preview: previewVideo1, full: video1 },
+            { id: 7, type: 'video', preview: previewVideo2, full: video2 },
+            { id: 8, type: 'video', preview: previewVideo3, full: video3 },
+            { id: 9, type: 'video', preview: previewVideo4, full: video4 },
+            { id: 10, type: 'video', preview: previewVideo5, full: video5 },
+            { id: 11, type: 'video', preview: previewVideo6, full: video6 },
+            { id: 12, type: 'video', preview: previewVideo7, full: video7 },
+            { id: 13, type: 'video', preview: previewVideo8, full: video8 },
+            { id: 14, type: 'video', preview: previewVideo9, full: video9 },
+            { id: 15, type: 'video', preview: previewVideo10, full: video10 },
+            { id: 16, type: 'video', preview: previewVideo11, full: video11 },
+            { id: 17, type: 'video', preview: previewVideo12, full: video12 },
+            { id: 18, type: 'video', preview: previewVideo13, full: video13 },
+            { id: 19, type: 'video', preview: previewVideo14, full: video14 },
+            { id: 20, type: 'video', preview: previewVideo15, full: video15 },
         ];
         setMediaItems(items);
     }, []);
@@ -134,7 +134,7 @@ const MediaGrid = () => {
         return (
             <video ref={videoRef} controls autoPlay>
                 <source src={media.full} type="video/mp4" />
-                Your browser does not support the video tag.
+                {/*Ваш браузер не поддерживает данный формат видео*/}
             </video>
         );
     };
@@ -145,7 +145,30 @@ const MediaGrid = () => {
             <button className="toMainPgBtn" onClick={() => navigate('/')}>Вернуться на главную страницу</button>
             <div className="media-grid">
                 {mediaItems.map((item, index) => (
-                    <div key={index} className="media-item" onClick={() => openMedia(index)}>
+                    <div key={item.id} className="media-item" onClick={() => openMedia(index)}>
+                        {
+                            item.type === 'video' ?
+                            <span className="icon-camera">
+                                <svg
+                                    id="Layer_1"
+                                    data-name="Layer 1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="117 199 382 332"  // Cropped viewBox to fit the icon
+                                    width="30px"
+                                    height="30px"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M482.28,434.61c-6.79,24.47-20.43,30.07-42.54,17.44-17.83-10.2-35.72-20.29-53.35-30.8a10.64,10.64,0,0,1-4.53-7.61q-.48-41.91,0-83.84a10.68,10.68,0,0,1,4.43-7.7c17.7-10.64,35.63-20.92,53.58-31.13,22-12.53,35.49-7,42.41,17.4Z"
+                                    />
+                                    <path
+                                        fill="#fff"
+                                        d="M234.59,481.24H154c-27,0-44.28-14.73-44.78-41.56-.89-46.78-.47-93.59.42-140.38.39-20.22,18.54-36.63,38.9-36.71q86.07-.36,172.15,0c22.53.11,39.62,18,39.66,40.64q.12,68.38,0,136.77c0,23.45-17.62,41.08-41.13,41.19C291,481.34,262.8,481.24,234.59,481.24Z"
+                                    />
+                                </svg>
+                            </span >
+                            : null
+                        }
                         <img src={item.preview} alt={`Media ${index + 1}`} className="media-thumbnail" />
                     </div>
                 ))}

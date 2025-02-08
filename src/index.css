@@ -471,6 +471,7 @@ gallery-container > img {
 }
 
 .media-item {
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -557,6 +558,12 @@ button {
   background-color: #dedede;
   outline: 3px solid #dedede;
   border-radius: 1px;
+}
+
+.icon-camera {
+  position: absolute;
+  left: 10px;
+  top: 10px;
 }
 
 /* MEDIA QUERIES */
